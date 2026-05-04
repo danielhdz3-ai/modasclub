@@ -44,10 +44,10 @@ export default function CarritoPage() {
         {/* Items */}
         <div className="lg:col-span-2 space-y-4">
           {items.map((item) => (
-            <div key={item.cartItemId} className="bg-white rounded-card border border-border p-4 flex gap-4">
+            <div key={`${item.product_id}-${item.variant_id ?? "default"}`} className="bg-white rounded-card border border-border p-4 flex gap-4">
               <div className="w-20 h-20 bg-surface-2 rounded-lg overflow-hidden flex-shrink-0">
-                {item.image ? (
-                  <Image src={item.image} alt={item.name} width={80} height={80} className="w-full h-full object-cover" />
+                {item.image_url ? (
+                  <Image src={item.image_url} alt={item.name} width={80} height={80} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-text-muted text-lg">
                     {item.name[0]}
@@ -57,8 +57,8 @@ export default function CarritoPage() {
 
               <div className="flex-1 min-w-0">
                 <p className="font-light text-text text-[14px] truncate">{item.name}</p>
-                {item.variant && (
-                  <p className="text-[12px] text-text-muted mt-0.5">{item.variant}</p>
+                {item.variant_name && (
+                  <p className="text-[12px] text-text-muted mt-0.5">{item.variant_name}</p>
                 )}
                 <p className="font-[family-name:var(--font-cormorant)] italic text-[18px] mt-1 text-text">
                   {formatPrice(item.price * item.quantity)}
@@ -67,7 +67,7 @@ export default function CarritoPage() {
 
               <div className="flex flex-col items-end gap-3">
                 <button
-                  onClick={() => removeItem(item.cartItemId)}
+                  onClick={() => removeItem(item.product_id, item.variant_id)}
                   className="text-text-muted hover:text-error transition-colors"
                 >
                   <Trash2 size={14} strokeWidth={1.5} />
@@ -75,14 +75,14 @@ export default function CarritoPage() {
 
                 <div className="flex items-center border border-border rounded-pill overflow-hidden">
                   <button
-                    onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
+                    onClick={() => updateQuantity(item.product_id, item.variant_id, item.quantity - 1)}
                     className="px-2.5 py-1.5 hover:bg-surface-2 text-text-secondary transition-colors"
                   >
                     <Minus size={12} strokeWidth={2} />
                   </button>
                   <span className="px-3 text-[13px] font-medium text-text">{item.quantity}</span>
                   <button
-                    onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
+                    onClick={() => updateQuantity(item.product_id, item.variant_id, item.quantity + 1)}
                     className="px-2.5 py-1.5 hover:bg-surface-2 text-text-secondary transition-colors"
                   >
                     <Plus size={12} strokeWidth={2} />
