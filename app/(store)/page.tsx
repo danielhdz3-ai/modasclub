@@ -5,6 +5,8 @@ import { ClubBanner } from "@/components/home/ClubBanner";
 import { NewsletterSection } from "@/components/home/NewsletterSection";
 import { buildMetadata } from "@/lib/utils/seo";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = buildMetadata({
   title: "ModasClub — Bolsos, Perfumes y Relojes",
   description: "Descubre nuestra selección exclusiva de bolsos, perfumes y relojes. Precios exclusivos para socias del Club.",
