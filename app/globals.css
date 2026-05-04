@@ -1,24 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #FFFFFF;
+  --color-surface: #FFF8F8;
+  --color-surface-2: #FDF0F0;
+  --color-primary: #E8A0A8;
+  --color-primary-hover: #D9848E;
+  --color-primary-light: #F5D5D8;
+  --color-primary-pale: #FDE8EA;
+  --color-nude: #D4B5A0;
+  --color-nude-light: #F0E6DC;
+  --color-text: #2C2C2C;
+  --color-text-secondary: #7A6B6B;
+  --color-text-muted: #B5A5A5;
+  --color-gold: #C9A87C;
+  --color-border: #EED9DA;
+  --color-success: #A8C5A0;
+  --color-error: #E09090;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Intentionally not using dark mode — boutique always light */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  box-sizing: border-box;
 }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-jost), sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white rounded-pill px-8 py-3.5 font-medium uppercase tracking-widest text-[13px] transition-all duration-300 hover:-translate-y-px hover:shadow-btn hover:bg-primary-hover inline-flex items-center justify-center gap-2;
+  }
+  .btn-outline {
+    @apply border border-primary text-primary bg-transparent rounded-pill px-8 py-3.5 font-medium uppercase tracking-widest text-[13px] transition-all duration-300 hover:bg-primary hover:text-white inline-flex items-center justify-center gap-2;
+  }
+  .btn-ghost {
+    @apply text-text-secondary font-medium uppercase tracking-widest text-[13px] transition-all duration-300 hover:text-primary inline-flex items-center justify-center gap-2;
+  }
+  .input-base {
+    @apply w-full border border-border rounded-lg px-4 py-3 font-light text-text placeholder:text-text-muted bg-surface-2 focus:outline-none focus:border-primary transition-all duration-200;
+  }
+  .card-product {
+    @apply bg-white border border-border rounded-card overflow-hidden transition-all duration-300 hover:bg-primary-pale hover:shadow-card;
+  }
+  .section-padding {
+    @apply py-20 px-4;
+  }
+  .content-max {
+    @apply max-w-[1200px] mx-auto;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface); }
+::-webkit-scrollbar-thumb { background: var(--color-primary-light); border-radius: 3px; }
+::selection { background: var(--color-primary-light); color: var(--color-text); }
 
 @layer utilities {
   .text-balance {
