@@ -173,7 +173,8 @@ async function seed() {
   for (const product of products) {
     const { data, error } = await supabase
       .from("products")
-      .upsert(product, { onConflict: "slug" })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .upsert(product as any, { onConflict: "slug" })
       .select()
       .single();
     if (error) {
