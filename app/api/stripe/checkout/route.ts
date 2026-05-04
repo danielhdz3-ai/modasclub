@@ -31,15 +31,15 @@ export async function POST(request: NextRequest) {
     }
 
     // Fetch products to get current prices
-    const productIds = items.map((i) => i.productId);
+    const productIds = items.map((i) => i.product_id);
     const { data: products } = await supabase
       .from("products")
       .select("id, name, price, member_price, slug")
       .in("id", productIds);
 
     const lineItems = items.map((item) => {
-      const product = products?.find((p) => p.id === item.productId);
-      if (!product) throw new Error(`Producto ${item.productId} no encontrado`);
+      const product = products?.find((p) => p.id === item.product_id);
+      if (!product) throw new Error(`Producto ${item.product_id} no encontrado`);
 
       const unitPrice = isMember && product.member_price
         ? Math.round(product.member_price * 100)
