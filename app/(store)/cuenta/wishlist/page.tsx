@@ -39,10 +39,10 @@ export default function WishlistPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {items.map((item) => (
-          <div key={item.productId} className="bg-white rounded-card border border-border p-4 flex gap-4">
+          <div key={item.product_id} className="bg-white rounded-card border border-border p-4 flex gap-4">
             <div className="w-20 h-20 bg-surface-2 rounded-lg overflow-hidden flex-shrink-0">
-              {item.image ? (
-                <Image src={item.image} alt={item.name} width={80} height={80} className="w-full h-full object-cover" />
+              {item.image_url ? (
+                <Image src={item.image_url} alt={item.name} width={80} height={80} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-text-muted">
                   {item.name[0]}
@@ -63,7 +63,7 @@ export default function WishlistPage() {
             </div>
 
             <button
-              onClick={() => removeItem(item.productId)}
+              onClick={() => removeItem(item.product_id)}
               className="text-text-muted hover:text-error transition-colors self-start"
               aria-label="Quitar de la lista"
             >

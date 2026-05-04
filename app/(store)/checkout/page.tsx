@@ -30,8 +30,8 @@ export default function CheckoutPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items: items.map((i) => ({
-            productId: i.productId,
-            variantId: i.variantId,
+            productId: i.product_id,
+            variantId: i.variant_id,
             quantity: i.quantity,
           })),
         }),
@@ -74,10 +74,10 @@ export default function CheckoutPage() {
         <h2 className="font-medium text-[14px] mb-4">Tu pedido</h2>
         <div className="space-y-3 divide-y divide-border">
           {items.map((item) => (
-            <div key={item.cartItemId} className="flex justify-between pt-3 first:pt-0 text-[13px]">
+            <div key={`${item.product_id}-${item.variant_id ?? "default"}`} className="flex justify-between pt-3 first:pt-0 text-[13px]">
               <div>
                 <p className="text-text font-light">{item.name}</p>
-                {item.variant && <p className="text-text-muted text-[11px]">{item.variant}</p>}
+                {item.variant_name && <p className="text-text-muted text-[11px]">{item.variant_name}</p>}
                 <p className="text-text-muted text-[11px]">× {item.quantity}</p>
               </div>
               <p className="font-[family-name:var(--font-cormorant)] italic text-[16px] text-text">
