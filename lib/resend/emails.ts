@@ -1,4 +1,4 @@
-import { resend, FROM_EMAIL, ADMIN_EMAIL } from "./client";
+import { getResend, FROM_EMAIL, ADMIN_EMAIL } from "./client";
 import { render } from "@react-email/render";
 import { WelcomeEmail } from "./templates/WelcomeEmail";
 import { OrderConfirmation } from "./templates/OrderConfirmation";
@@ -7,7 +7,7 @@ import { PasswordReset } from "./templates/PasswordReset";
 
 export async function sendWelcomeEmail(to: string, name?: string) {
   const html = await render(WelcomeEmail({ email: to, name }));
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM_EMAIL,
     to,
     subject: "Bienvenida a ModasClub ✨",
@@ -34,7 +34,7 @@ export async function sendOrderConfirmation(
   }
 ) {
   const html = await render(OrderConfirmation(data));
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM_EMAIL,
     to,
     subject: `Pedido confirmado · ${data.orderNumber}`,
@@ -54,7 +54,7 @@ export async function sendShippingUpdate(
   }
 ) {
   const html = await render(ShippingUpdate(data));
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM_EMAIL,
     to,
     subject: `Tu pedido ${data.orderNumber} está en camino 📦`,
@@ -64,7 +64,7 @@ export async function sendShippingUpdate(
 
 export async function sendPasswordReset(to: string, resetUrl: string) {
   const html = await render(PasswordReset({ resetUrl }));
-  return resend.emails.send({
+  return getResend().emails.send({
     from: FROM_EMAIL,
     to,
     subject: "Restablecer contraseña · ModasClub",
