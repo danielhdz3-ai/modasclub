@@ -1,32 +1,31 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const SIDE_IMG =
-  "https://images.unsplash.com/photo-1483989563090-c0f25e8de2d5?w=900&q=85&auto=format&fit=crop";
+  "https://images.unsplash.com/photo-1483989563090-c0f25e8de2d5?auto=format&fit=crop&w=1200&q=85";
 
 export function BoutiqueStory() {
   return (
     <section className="section-padding bg-[#FBF7F5] border-y border-border/60">
       <div className="content-max">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="relative aspect-[4/5] max-h-[560px] rounded-card overflow-hidden shadow-lg order-2 lg:order-1">
-            <Image
+          <div className="relative aspect-[4/5] max-h-[560px] rounded-card overflow-hidden shadow-lg order-2 lg:order-1 bg-[#e8ddd9]">
+            <img
               src={SIDE_IMG}
               alt="ModasClub — estilo y complicidad"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="absolute inset-0 h-full w-full object-cover"
+              width={900}
+              height={1125}
+              loading="lazy"
+              decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/25 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/25 via-transparent to-transparent" />
             <p className="absolute bottom-6 left-6 right-6 text-white font-[family-name:var(--font-cormorant)] italic text-2xl md:text-3xl font-light drop-shadow-md">
               «Elegancia sin prisa»
             </p>
           </div>
 
           <div className="order-1 lg:order-2 space-y-6">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-primary">
-              La boutique
-            </p>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-primary">La boutique</p>
             <h2 className="font-[family-name:var(--font-cormorant)] italic text-4xl md:text-5xl text-text font-light leading-tight">
               ModasClub es tu rincón de lujo accesible
             </h2>

@@ -1,16 +1,14 @@
-import Image from "next/image";
-
 const SHOTS = [
   {
-    src: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&q=85&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85",
     alt: "Modelo con bolso, sonrisa",
   },
   {
-    src: "https://images.unsplash.com/photo-1529139574466-a303027614a5?w=600&q=85&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1529139574466-a303027614a5?auto=format&fit=crop&w=800&q=85",
     alt: "Amigas de compras con bolsos",
   },
   {
-    src: "https://images.unsplash.com/photo-1558769132-cbfb1cb55edb?w=600&q=85&auto=format&fit=crop",
+    src: "https://images.unsplash.com/photo-1558769132-cbfb1cb55edb?auto=format&fit=crop&w=800&q=85",
     alt: "Detalle de complementos de moda",
   },
 ];
@@ -26,16 +24,18 @@ export function EditorialStrip() {
           {SHOTS.map((shot) => (
             <div
               key={shot.src}
-              className="relative aspect-[3/4] rounded-card overflow-hidden group"
+              className="group relative aspect-[3/4] overflow-hidden rounded-card bg-surface-2"
             >
-              <Image
+              <img
                 src={shot.src}
                 alt={shot.alt}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-                sizes="(max-width: 640px) 100vw, 33vw"
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                width={600}
+                height={800}
+                loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-card pointer-events-none" />
+              <div className="pointer-events-none absolute inset-0 rounded-card ring-1 ring-inset ring-black/5" />
             </div>
           ))}
         </div>

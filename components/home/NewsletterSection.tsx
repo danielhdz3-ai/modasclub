@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { useUIStore } from "@/store/uiStore";
-import Image from "next/image";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -41,13 +40,15 @@ export function NewsletterSection() {
       <div className="content-max">
         <div className="relative rounded-[20px] overflow-hidden grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           {/* Image */}
-          <div className="relative aspect-[4/3] rounded-card overflow-hidden hidden md:block">
-            <Image
-              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85&fit=crop&crop=faces,center"
+          <div className="relative aspect-[4/3] rounded-card overflow-hidden hidden md:block bg-surface-2">
+            <img
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85"
               alt="Mujer leyendo con café, luz natural"
-              fill
-              className="object-cover"
-              sizes="50vw"
+              className="absolute inset-0 h-full w-full object-cover"
+              width={1000}
+              height={750}
+              loading="lazy"
+              decoding="async"
             />
           </div>
 

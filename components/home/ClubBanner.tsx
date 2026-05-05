@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Check } from "lucide-react";
 
@@ -47,13 +46,15 @@ export function ClubBanner() {
           </div>
 
           {/* Image */}
-          <div className="relative hidden md:block">
-            <Image
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=85&fit=crop&crop=faces,center"
+          <div className="relative hidden min-h-[400px] md:block bg-surface-2">
+            <img
+              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85"
               alt="Mujeres amigas comprando, luz natural"
-              fill
-              className="object-cover"
-              sizes="50vw"
+              className="absolute inset-0 h-full w-full object-cover"
+              width={1000}
+              height={800}
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-transparent to-surface-2/30" />
           </div>

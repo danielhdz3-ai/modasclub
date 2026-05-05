@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const CATEGORIES = [
   {
@@ -7,21 +6,21 @@ const CATEGORIES = [
     slug: "bolsos",
     description: "Piezas que definen tu estilo",
     image:
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1200&q=85&fit=crop&crop=center&auto=format",
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=85",
   },
   {
     name: "Perfumes",
     slug: "perfumes",
     description: "Aromas que te acompañan",
     image:
-      "https://images.unsplash.com/photo-1588406354037-f4348c95749e?w=1200&q=85&fit=crop&crop=center&auto=format",
+      "https://images.unsplash.com/photo-1588406354037-f4348c95749e?auto=format&fit=crop&w=1200&q=85",
   },
   {
     name: "Relojes",
     slug: "relojes",
     description: "El tiempo con elegancia",
     image:
-      "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=1200&q=85&fit=crop&crop=center&auto=format",
+      "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=1200&q=85",
   },
 ];
 
@@ -41,16 +40,18 @@ export function CategoryGrid() {
             <Link
               key={cat.slug}
               href={`/categoria/${cat.slug}`}
-              className="group relative aspect-[3/4] rounded-card overflow-hidden bg-surface-2"
+              className="group relative aspect-[3/4] overflow-hidden rounded-card bg-surface-2"
             >
-              <Image
+              <img
                 src={cat.image}
                 alt={cat.name}
-                fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                width={900}
+                height={1200}
+                loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="font-[family-name:var(--font-cormorant)] italic text-3xl font-light mb-1">
                   {cat.name}
