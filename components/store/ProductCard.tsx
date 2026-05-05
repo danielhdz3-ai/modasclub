@@ -13,10 +13,17 @@ import { getProductImages } from "@/lib/utils/product-images";
 import { cn } from "@/lib/utils/cn";
 import type { Product } from "@/types/database";
 
-interface ProductCardProps {
+const CATEGORY_FALLBACKS: Record<string, string> = {
+  bolsos: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+  perfumes: "https://images.unsplash.com/photo-1592945403407-9caf930aaff8?auto=format&fit=crop&w=800&q=80",
+  relojes: "/imagenes/relojes1.jpg",
+  default: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80",
+};
+
+type ProductCardProps = {
   product: Product;
   showMemberPrice?: boolean;
-}
+};
 
 export function ProductCard({ product, showMemberPrice = false }: ProductCardProps) {
   const [hovered, setHovered] = useState(false);
@@ -84,11 +91,15 @@ export function ProductCard({ product, showMemberPrice = false }: ProductCardPro
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-surface-2">
-            <span className="font-[family-name:var(--font-cormorant)] text-3xl text-primary-light italic">
-              {product.brand?.[0] ?? product.name[0]}
-            </span>
-          </div>
+          <img
+            src={
+              CATEGORY_FALLBACKS[
+                (product as Product & { category?: { slug?: string } }).category?.slug ?? "default"
+              ] ?? CATEGORY_FALLBACKS.default
+            }
+            alt={product.name}
+            className="w-full h-full object-cover"
+          />
         )}
 
         {/* Badges */}
