@@ -46,7 +46,7 @@ export function ProductCard({ product, showMemberPrice = false }: ProductCardPro
       price: product.price,
       member_price: product.member_price,
       image_url: primaryImage?.url ?? null,
-      sku: product.sku,
+      sku: product.sku ?? "",
       slug: product.slug,
       variant_name: null,
       stock_quantity: product.stock_quantity,

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 
 const LINKS = {
   tienda: [
@@ -13,7 +14,7 @@ const LINKS = {
     { label: "Unirse", href: "/club#unirse" },
   ],
   ayuda: [
-    { label: "Sobre nosotros", href: "/sobre-nosotros" },
+    { label: "Sobre nosotros", href: "/sobre-nosotras" },
     { label: "Contacto", href: "/contacto" },
     { label: "Devoluciones", href: "/devoluciones" },
     { label: "Envíos", href: "/envios" },
@@ -25,13 +26,8 @@ export function Footer() {
     <footer className="bg-[#FDF0F0] border-t border-border mt-20">
       <div className="max-w-[1200px] mx-auto px-4 py-16">
         {/* Logo centrado */}
-        <div className="text-center mb-12">
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-cormorant)] italic text-3xl text-primary-hover font-light tracking-wide"
-          >
-            ModasClub
-          </Link>
+        <div className="flex flex-col items-center mb-12">
+          <BrandLogo size="lg" />
           <p className="mt-2 text-[13px] text-text-muted font-light font-[family-name:var(--font-pinyon)] text-xl">
             Moda con alma
           </p>

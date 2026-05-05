@@ -1,4 +1,6 @@
 import { HeroSection } from "@/components/home/HeroSection";
+import { EditorialStrip } from "@/components/home/EditorialStrip";
+import { BoutiqueStory } from "@/components/home/BoutiqueStory";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { ClubBanner } from "@/components/home/ClubBanner";
@@ -17,6 +19,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <EditorialStrip />
+      <BoutiqueStory />
       <CategoryGrid />
       <FeaturedProducts />
       <ClubBanner />

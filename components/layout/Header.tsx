@@ -7,6 +7,7 @@ import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useUIStore } from "@/store/uiStore";
 import { useAuth } from "@/hooks/useAuth";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { cn } from "@/lib/utils/cn";
 
 const NAV_LINKS = [
@@ -21,7 +22,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const totalItems = useCartStore((s) => s.getTotalItems());
   const wishlistCount = useWishlistStore((s) => s.items.length);
-  const { openCart, openSearch, openMobileNav } = useUIStore();
+  const openCartDrawer = useCartStore((s) => s.openCart);
+  const { openSearch, openMobileNav } = useUIStore();
   const { user, isAdmin } = useAuth();
 
   useEffect(() => {
@@ -39,12 +41,7 @@ export function Header() {
     >
       <div className="max-w-[1200px] mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="font-[family-name:var(--font-cormorant)] italic text-2xl text-primary-hover font-light tracking-wide"
-        >
-          ModasClub
-        </Link>
+        <BrandLogo size="md" />
 
         {/* Nav — desktop */}
         <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
@@ -83,7 +80,7 @@ export function Header() {
           </Link>
 
           <button
-            onClick={() => openCart()}
+            onClick={() => openCartDrawer()}
             aria-label={`Carrito (${totalItems} productos)`}
             className="relative p-2 text-text-secondary hover:text-primary transition-colors"
           >

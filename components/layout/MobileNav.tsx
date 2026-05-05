@@ -5,6 +5,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { useUIStore } from "@/store/uiStore";
 import { cn } from "@/lib/utils/cn";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 
 const NAV_LINKS = [
   { label: "Bolsos", href: "/categoria/bolsos" },
@@ -12,7 +13,7 @@ const NAV_LINKS = [
   { label: "Relojes", href: "/categoria/relojes" },
   { label: "Novedades", href: "/productos?sort=newest" },
   { label: "El Club", href: "/club" },
-  { label: "Sobre nosotros", href: "/sobre-nosotros" },
+  { label: "Sobre nosotras", href: "/sobre-nosotras" },
   { label: "Contacto", href: "/contacto" },
 ];
 
@@ -44,13 +45,7 @@ export function MobileNav() {
         )}
       >
         <div className="flex items-center justify-between p-5 border-b border-border">
-          <Link
-            href="/"
-            onClick={closeMobileNav}
-            className="font-[family-name:var(--font-cormorant)] italic text-xl text-primary-hover"
-          >
-            ModasClub
-          </Link>
+          <BrandLogo size="sm" />
           <button onClick={closeMobileNav} aria-label="Cerrar menú">
             <X size={20} strokeWidth={1.5} className="text-text-secondary" />
           </button>
