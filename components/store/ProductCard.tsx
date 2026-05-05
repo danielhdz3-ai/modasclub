@@ -9,6 +9,7 @@ import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useUIStore } from "@/store/uiStore";
 import { formatPrice } from "@/lib/utils/formatters";
+import { getProductImages } from "@/lib/utils/product-images";
 import { cn } from "@/lib/utils/cn";
 import type { Product } from "@/types/database";
 
@@ -25,7 +26,7 @@ export function ProductCard({ product, showMemberPrice = false }: ProductCardPro
   const { toggleItem, isInWishlist } = useWishlistStore();
   const { addToast } = useUIStore();
 
-  const images = product.images ?? [];
+  const images = getProductImages(product);
   const primaryImage = images.find((i) => i.is_primary) ?? images[0];
   const secondaryImage = images[1];
 

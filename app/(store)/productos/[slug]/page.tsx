@@ -6,6 +6,7 @@ import { StockBadge } from "@/components/store/StockBadge";
 import { ReviewStars } from "@/components/store/ReviewStars";
 import { AddToCartButton } from "./AddToCartButton";
 import { buildMetadata } from "@/lib/utils/seo";
+import { getProductImages } from "@/lib/utils/product-images";
 import type { Product } from "@/types/database";
 import type { Metadata } from "next";
 
@@ -29,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await getProduct(slug);
   if (!product) return {};
 
-  const primaryImage = product.images?.find((i) => i.is_primary) ?? product.images?.[0];
+  const imgs = getProductImages(product);
+  const primaryImage = imgs.find((i) => i.is_primary) ?? imgs[0];
   return buildMetadata({
     title: `${product.name} | ModasClub`,
     description: product.meta_description ?? product.short_description ?? undefined,
@@ -43,7 +45,7 @@ export default async function ProductDetailPage({ params }: Props) {
   const product = await getProduct(slug);
   if (!product) notFound();
 
-  const images = product.images ?? [];
+  const images = getProductImages(product);
 
   // Structured data (JSON-LD)
   const jsonLd = {

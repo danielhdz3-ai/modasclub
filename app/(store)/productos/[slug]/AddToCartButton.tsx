@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useUIStore } from "@/store/uiStore";
+import { getProductImages } from "@/lib/utils/product-images";
 import type { Product } from "@/types/database";
 
 interface AddToCartButtonProps {
@@ -20,7 +21,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
 
   const inWishlist = isInWishlist(product.id);
   const isOutOfStock = product.stock_status === "out_of_stock";
-  const images = product.images ?? [];
+  const images = getProductImages(product);
   const primaryImage = images.find((i) => i.is_primary) ?? images[0];
 
   const handleAddToCart = () => {

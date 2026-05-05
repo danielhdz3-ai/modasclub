@@ -94,7 +94,10 @@ export interface Product {
   stock_quantity: number;
   stock_status: StockStatus;
   low_stock_threshold: number;
-  images: ProductImage[];
+  /** Si viene vacío desde API, usar `primary_image_url`. */
+  images?: ProductImage[];
+  /** Columna en Supabase; la tienda la usa si no hay filas en `product_images`. */
+  primary_image_url?: string | null;
   video_url: string | null;
   meta_title: string | null;
   meta_description: string | null;

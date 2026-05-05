@@ -6,19 +6,22 @@ const CATEGORIES = [
     name: "Bolsos",
     slug: "bolsos",
     description: "Piezas que definen tu estilo",
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=85&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=1200&q=85&fit=crop&crop=center&auto=format",
   },
   {
     name: "Perfumes",
     slug: "perfumes",
     description: "Aromas que te acompañan",
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683702?w=800&q=85&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1588406354037-f4348c95749e?w=1200&q=85&fit=crop&crop=center&auto=format",
   },
   {
     name: "Relojes",
     slug: "relojes",
     description: "El tiempo con elegancia",
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=85&fit=crop&crop=center",
+    image:
+      "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=1200&q=85&fit=crop&crop=center&auto=format",
   },
 ];
 
